@@ -2,7 +2,7 @@
 
 thrift_file 目录执行：$ thrift -out .. --gen py example.thrift，就会在 thrift_file 的同级目录下生成 python 的包：example
 
-##Transport
+## Transport
 
 Transport网络读写（socket，http等）抽象，用于和其他thrift组件解耦。
 
@@ -14,15 +14,15 @@ python中Transport的实现包括：TSocket, THttpServer, TSSLSocket, TTwisted, 
 
 在创建server时，传入的时Tranport的工厂，这些Factory包括：TTransportFactoryBase（没有任何修饰，直接返回），TBufferedTransportFactory（返回带缓冲的Transport）和TFramedTransportFactory（返回帧定位的Transport）。
 
-##Protocol
+## Protocol
 Protocol用于对数据格式抽象，在rpc调用时序列化请求和响应。
 
 TProtocol的实现包括：TJSONProtocol，TSimpleJSONProtocol，TBinaryProtocol，TBinaryPotocolAccelerated，TCompactProtocol。
 
-##Processor
+## Processor
 Processor对stream读写抽象，最终会调用用户编写的handler已响应对应的service。具体的Processor有compiler生成，用户需要实现service的实现类。
 
-##Server
+## Server
 
 Server创建Transport，输入、输出的Protocol，以及响应service的handler，监听到client的请求然后委托给processor处理。
 
